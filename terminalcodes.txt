@@ -1,0 +1,17 @@
+cd "F:\Lamia IUBAT\Users\lamia.DESKTOP-OB3DGDN.000\code\WebE"
+
+django-admin startproject fms ////////// (always works) python -m django startproject fms
+
+
+cd fms
+
+cd "F:\Lamia IUBAT\Users\lamia.DESKTOP-OB3DGDN.000\code\WebE\fms"
+
+py manage.py makemigrations fms
+py manage.py migrate
+py manage.py createsuperuser (lamia, lj@g.com, password aa@12345)
+py manage.py runserver
+
+del db.sqlite3 (DB delete)
+
+

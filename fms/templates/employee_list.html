@@ -1,0 +1,198 @@
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4ff;
+    color: #1a1a1a;
+    margin: 20px;
+}
+
+h1, h2 {
+    color: #2e5cb8; 
+    margin-bottom: 10px;
+}
+
+
+a.btn {
+    display: inline-block;
+    background-color: #2e5cb8;
+    color: white;
+    padding: 6px 12px;
+    margin: 5px 0 15px 0;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    align-items: center ;
+}
+
+a.btn:hover {
+    background-color: #1f3f88;
+}
+a.btnED {
+
+    display: inline-block;
+    background-color: #766b81;
+    color: white;
+    padding: 6px 12px;
+    margin: 5px 0 15px 0;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+th, td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #2e5cb8;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f5f7ff;
+}
+
+tr:hover {
+    background-color: #d0e0ff;
+}
+
+
+table a {
+    color: #2e5cb8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+table a:hover {
+    text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    
+    th, td {
+        padding: 10px;
+        border: none;
+    }
+    
+    tr {
+        margin-bottom: 15px;
+        background-color: #f5f7ff;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    th {
+        background-color: #2e5cb8;
+        color: white;
+    }
+}
+</style>
+
+<h1 style="text-align: center;">Admin Dashboard</h1>
+<a href="{% url 'admin_logout' %}" style="float: right;" class="btnED">Logout</a>
+
+<a href="{% url 'employee_add' %}" class="btn">Add New Employee</a>
+<a href="{% url 'supplier_add' %}" class="btn">Add New Supplier</a>
+<a href="{% url 'product_add' %}" class="btn">Add New Product</a>
+<a href="{% url 'take_attendance' %}" class="btn" style="background-color:#4caf50;">Take Attendance</a>
+<a href="{% url 'attendance_list' %}" class="btn" style="background-color:#4caf50;">Edit Attendance</a><br>
+<a href="#emp" class="btn"  style="background-color:#a2409a;">View all employee list</a>
+<a href="#sup" class="btn"  style="background-color:#a2409a;">View all Supplier list</a>
+<a href="#pro" class="btn"  style="background-color:#a2409a;">View all Product list</a>
+
+
+<h2 id="emp">Employees</h2>
+<a href="{% url 'employee_add' %}" class="btn">Add New Employee</a>
+    <a href="{% url 'employee_bonus' %}" class="btnED">Add Bonus Percentage</a> 
+<table border="1" cellpadding="10">
+  <tr>
+    <th>SL</th>
+    <th>Name</th>
+    <th>Position</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Salary</th>
+    <th>Actions</th>
+  </tr>
+  {% for emp in employees %}
+  <tr>
+    <td>{{ emp.sl }}</td>
+    <td>{{ emp.name }}</td>
+    <td>{{ emp.position }}</td>
+    <td>{{ emp.phone }}</td>
+    <td>{{ emp.email }}</td>
+    <td>BDT {{ emp.salary }}</td>
+    <td>
+      <a href="{% url 'employee_edit' emp.sl %}" class="btnED">Edit</a> |
+      <a href="{% url 'employee_delete' emp.sl %}" onclick="return confirm('Delete this supplier?');" class="btnED">Delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+<h2 id="sup">Suppliers</h2>
+<a href="{% url 'supplier_add' %}" class="btn">Add New Supplier</a>
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Raw Material</th>
+        <th>Actions</th>
+    </tr>
+    {% for sup in suppliers %}
+    <tr>
+        <td>{{ sup.sl }}</td>
+        <td>{{ sup.name }}</td>
+        <td>{{ sup.email }}</td>
+        <td>{{ sup.phone }}</td>
+        <td>{{ sup.raw_material_name }}</td>
+        <td>
+            <a href="{% url 'supplier_edit' sup.sl %}" class="btnED" >Edit</a> |
+            <a href="{% url 'supplier_delete' sup.sl %}" onclick="return confirm('Delete this supplier?');" class="btnED">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2 id="pro">Products</h2>
+<a href="{% url 'product_add' %}" class="btn">Add New Product</a>
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+    {% for prod in products %}
+    <tr>
+        <td>{{ prod.sl }}</td>
+        <td>{{ prod.name }}</td>
+        <td>BDT {{ prod.price }}</td>
+        <td>
+            <a href="{% url 'product_edit' prod.sl %}" class="btnED">Edit</a> |
+            <a href="{% url 'product_delete' prod.sl %}" onclick="return confirm('Delete this product?');" class="btnED">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

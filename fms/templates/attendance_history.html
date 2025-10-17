@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+  <div class="card-body">
+    <h5>Attendance History</h5>
+    <table class="table">
+      <thead><tr><th>Status</th><th>Timestamp</th></tr></thead>
+      <tbody>
+      {% for a in attendances %}
+        <tr>
+          <td>{{ a.get_status_display }}</td>
+          <td>{{ a.timestamp|date:"Y-m-d H:i:s" }}</td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="2">No attendance records yet.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

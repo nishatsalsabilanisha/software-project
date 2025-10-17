@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moon Star Fashion | Home</title>
+  
+
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+ 
+<nav class="navbar">
+  <div class="logo">
+      <i class="fas fa-tshirt"></i>
+      <span>Moon Star Fashion</span>
+  </div>
+  <div class="nav-links">
+    <a href="{% url 'index' %}" class="nav-link active">Home</a>
+    <a href="{% url 'about' %}" class="nav-link">About Us</a>
+    <a href="{% url 'employee_register_page' %}" class="nav-link">Employee Register</a>
+    <a href="{% url 'supplier_register_page' %}" class="nav-link">Supplier Register</a>
+    <a href="{% url 'admin_login' %}" class="nav-link">Admin</a>
+    <a href="{% url 'login_page' %}" class="nav-link">Login</a>
+  </div>
+</nav>
+
+  
+  <section class="page-content">
+    <div class="hero">
+      <h1>Streamline Your Garment Business</h1>
+      <p>Manage inventory, orders, and customers with our all-in-one garment shop management solution</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="{% url 'employee_register_page' %}" class="btn">Employee Register</a>
+        <a href="{% url 'supplier_register_page' %}" class="btn">Supplier Register</a>
+        <a href="{% url 'login_page' %}" class="btn">Login</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

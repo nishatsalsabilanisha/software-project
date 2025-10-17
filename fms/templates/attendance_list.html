@@ -1,0 +1,84 @@
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #1a1a1a;
+    padding: 20px;
+}
+
+h2 {
+    color: #4169e1; 
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 3px solid #4169e1; 
+    text-align: left;
+}
+
+th {
+    background-color: #4169e1; 
+    color: white;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #e6ecff; 
+}
+
+tr:hover {
+    background-color: #b0c4ff; 
+    transition: background-color 0.3s ease;
+}
+
+
+a {
+    text-decoration: none;
+    color: white;
+    background-color: #4169e1;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #27408b;
+}
+
+@media (max-width: 768px) {
+    table, th, td {
+        font-size: 14px;
+    }
+}
+</style>
+
+
+<h2>All Attendance Records</h2>
+<table border="1">
+    <tr>
+        <th>Employee</th>
+        <th>Status</th>
+        <th>Timestamp</th>
+        <th>Action</th>
+    </tr>
+    {% for att in attendances %}
+    <tr>
+        <td>{{ att.employee.employee.name }}</td>
+        <td>{{ att.get_status_display }}</td>
+        <td>{{ att.timestamp }}</td>
+        <td>
+            <a href="{% url 'attendance_edit' att.pk %}">Edit</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
