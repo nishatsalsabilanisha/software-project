@@ -6,12 +6,32 @@ django-admin startproject fms ////////// (always works) python -m django startpr
 cd fms
 
 cd "F:\Lamia IUBAT\Users\lamia.DESKTOP-OB3DGDN.000\code\WebE\fms"
+py manage.py createsuperuser (lamia, lj@g.com, password aa@12345)
 
 py manage.py makemigrations fms
 py manage.py migrate
-py manage.py createsuperuser (lamia, lj@g.com, password aa@12345)
-py manage.py runserver
+python manage.py runserver
 
 del db.sqlite3 (DB delete)
 
+pdf(virtual environment)
+cd C:\Users\HP\Documents\Project\db
+python -m venv .venv
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+.\.venv\Scripts\Activate.ps1
+pip install --upgrade pip
+pip install -r requirements.txt
+python manage.py makemigrations fms
+python manage.py migrate
+python manage.py createsuperuser   # optional
+python manage.py runserver
+
+git(
+git init
+git add .
+git commit -am "initial commit"
+ git remote add origin https://github.com/nishatsalsabilanisha/software-project.git
+git push origin master)
+new commit(git commit -am "anisha fasion"
+git push origin master)
 

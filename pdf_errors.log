@@ -1,0 +1,8 @@
+
+==== ModuleNotFoundError at 2025-12-13T10:22:09.502951 ====
+PDF generation library (xhtml2pdf) not installed: No module named 'xhtml2pdf'
+Traceback (most recent call last):
+  File "C:\Users\HP\Documents\Project\db2\fms\views.py", line 553, in download_admin_dashboard_pdf
+    from xhtml2pdf import pisa as pisa_module
+ModuleNotFoundError: No module named 'xhtml2pdf'
+
